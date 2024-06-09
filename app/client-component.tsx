@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { useRef } from "react";
 import { sendMessage } from "./action";
 import useSWR from "swr";
+import { wrapServerAction } from "./lt-event";
 
 export type Message = {
   id: number;
@@ -97,7 +98,7 @@ export function ChatClientComponent({
           const text = formData.get("message") as string;
           if (text !== "" && address !== null) {
             formRef.current?.reset();
-            await mutate(sendMessage(text), {
+            await mutate(wrapServerAction(sendMessage(text)), {
               optimisticData: [
                 {
                   text,
