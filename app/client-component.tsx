@@ -38,55 +38,65 @@ export function ChatClientComponent({
           }
           const fromSelf = message.address === address;
           return (
-            <div
-              key={index}
-              className={cn(
-                "w-full flex items-end",
-                fromSelf ? "flex-row-reverse" : "flex-row"
-              )}
-            >
-              {fromSelf ? (
-                <div className="pb-[.37rem] z-10 w-[0.75rem] overflow-hidden flex flex-col items-end">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="17"
-                    viewBox="0 0 14 17"
-                    fill="none"
-                  >
-                    <path
-                      d="M11.8342 16H1V2L7.5001 10.509C7.7487 10.8344 8.0458 11.1197 8.381 11.355L12.4086 14.1815C13.2084 14.7427 12.8113 16 11.8342 16Z"
-                      fill="#4378FF"
-                      stroke="#395BB1"
-                    />
-                  </svg>
-                </div>
-              ) : (
-                <div className="pb-[.37rem] z-10 w-[0.75rem] overflow-hidden">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="17"
-                    viewBox="0 0 14 17"
-                    fill="none"
-                  >
-                    <path
-                      d="M2.16579 16H13V2L6.4999 10.509C6.2513 10.8344 5.9542 11.1197 5.619 11.355L1.59136 14.1815C0.791551 14.7427 1.18869 16 2.16579 16Z"
-                      fill="#20232C"
-                      stroke="#242730"
-                    />
-                  </svg>
-                </div>
-              )}
+            <div className="flex flex-col mt-[-0.625rem]">
               <div
                 className={cn(
-                  "rounded-[0.5rem] border flex-shrink-0 px-[.75rem] py-[.25rem]",
-                  fromSelf
-                    ? "bg-[#4378FF] border-[#395BB1] mr-[-.0625rem]"
-                    : "bg-[#20232C] border-[#242730] ml-[-.0625rem]"
+                  "text-[#909195] text-[0.75rem] w-full",
+                  fromSelf ? "pr-[0.62rem] text-right" : "pl-[0.62rem]"
                 )}
               >
-                <p>{message.text}</p>
+                {message.address.slice(0, 5)}...{message.address.slice(-3)}
+              </div>
+              <div
+                key={index}
+                className={cn(
+                  "w-full flex items-end",
+                  fromSelf ? "flex-row-reverse" : "flex-row"
+                )}
+              >
+                {fromSelf ? (
+                  <div className="pb-[.37rem] z-10 w-[0.75rem] overflow-hidden flex flex-col items-end">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="17"
+                      viewBox="0 0 14 17"
+                      fill="none"
+                    >
+                      <path
+                        d="M11.8342 16H1V2L7.5001 10.509C7.7487 10.8344 8.0458 11.1197 8.381 11.355L12.4086 14.1815C13.2084 14.7427 12.8113 16 11.8342 16Z"
+                        fill="#4378FF"
+                        stroke="#395BB1"
+                      />
+                    </svg>
+                  </div>
+                ) : (
+                  <div className="pb-[.37rem] z-10 w-[0.75rem] overflow-hidden">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="17"
+                      viewBox="0 0 14 17"
+                      fill="none"
+                    >
+                      <path
+                        d="M2.16579 16H13V2L6.4999 10.509C6.2513 10.8344 5.9542 11.1197 5.619 11.355L1.59136 14.1815C0.791551 14.7427 1.18869 16 2.16579 16Z"
+                        fill="#20232C"
+                        stroke="#242730"
+                      />
+                    </svg>
+                  </div>
+                )}
+                <div
+                  className={cn(
+                    "rounded-[0.5rem] border flex-shrink-0 px-[.75rem] py-[.25rem]",
+                    fromSelf
+                      ? "bg-[#4378FF] border-[#395BB1] mr-[-.0625rem]"
+                      : "bg-[#20232C] border-[#242730] ml-[-.0625rem]"
+                  )}
+                >
+                  <p>{message.text}</p>
+                </div>
               </div>
             </div>
           );
