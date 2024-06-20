@@ -1,1 +1,1 @@
-export { middleware } from "./chopin";
+export { middleware } from "@chopinframework/next";

@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chopinframework/next": "^1.0.9",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@vercel/postgres": "^0.8.0",
     "clsx": "^2.1.1",

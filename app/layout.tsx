@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { ChopinClient } from "@chopinframework/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} flex items-center justify-center h-screen`}>
         <div className="w-[46.5rem] h-80 rounded-2xl border border-[#20232C] overflow-hidden">{children}</div>
+        <ChopinClient />
       </body>
     </html>
   );

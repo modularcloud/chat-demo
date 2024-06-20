@@ -1,6 +1,6 @@
-import { getAddress } from "@/chopin";
+import { getAddress } from "@chopinframework/next";
 import { sql } from "@vercel/postgres";
-import { ChatClientComponent, Message } from "./client-component";
+import { ChatClientComponent, type Message } from "./client-component";
 
 export default async function Page() {
   let messages;
@@ -24,7 +24,9 @@ export default async function Page() {
     }
   }
   const address = await getAddress();
-  return <ChatClientComponent initialMessages={messages.rows} address={address} />;
+  return (
+    <ChatClientComponent initialMessages={messages.rows} address={address} />
+  );
 }
 
 export const revalidate = 0;

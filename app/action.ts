@@ -1,5 +1,5 @@
 "use server";
-import { getAddress } from "@/chopin";
+import { getAddress } from "@chopinframework/next";
 import { sql } from "@vercel/postgres";
 
 export async function sendMessage(text: string) {
@@ -11,4 +11,3 @@ export async function sendMessage(text: string) {
   const { rows } = await sql`SELECT * FROM messages ORDER BY timestamp DESC LIMIT 20;`;
   return rows;
 }
-
