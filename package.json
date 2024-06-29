@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@baselime/node-opentelemetry": "^0.5.8",
     "@chopinframework/next": "^1.0.10",
     "@radix-ui/react-tooltip": "^1.0.7",
     "@vercel/postgres": "^0.8.0",
