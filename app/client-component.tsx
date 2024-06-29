@@ -40,6 +40,11 @@ export function ChatClientComponent({
       <div className="flex flex-col h-full pb-3 px-3 text-sm leading-6">
         <div className="flex flex-col-reverse gap-4 flex-grow overflow-scroll py-3">
           {data.map((message: Message, index: number) => {
+
+            // temporarily needed
+            message.address = message.address.toLowerCase();
+            address = address?.toLowerCase() ?? null;
+
             if (message.text === "") {
               return null;
             }
