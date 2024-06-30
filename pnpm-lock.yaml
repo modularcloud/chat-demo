@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.5.8
     version: 0.5.8(@trpc/server@10.45.2)
   '@chopinframework/next':
-    specifier: ^1.0.11
-    version: 1.0.11(next@14.2.3)(react@18.3.1)
+    specifier: 1.0.12
+    version: 1.0.12(next@14.2.3)(react@18.3.1)
   '@radix-ui/react-tooltip':
     specifier: ^1.0.7
     version: 1.0.7(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
@@ -111,8 +111,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@chopinframework/next@1.0.11(next@14.2.3)(react@18.3.1):
-    resolution: {integrity: sha512-EGMWjJKG76lTOu3dRUu7/G/psFz0IVJFCLQxpVKiw+I95oP5pWzgiWtQt1LLXLl8iORCIDJparTbeVPbDbWQsA==}
+  /@chopinframework/next@1.0.12(next@14.2.3)(react@18.3.1):
+    resolution: {integrity: sha512-ZNQ+DbUg2iP4zQZgEH5kZdo2zkTuA/r5041N6ScAffwvT7YD8BvJhpQlk0wFC5XQ2JgK/AVfUvEHztIc8w+JJg==}
     peerDependencies:
       next: ^14.1.1
     dependencies:
