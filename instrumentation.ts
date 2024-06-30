@@ -5,6 +5,7 @@ export async function register() {
 
     const sdk = new BaselimeSDK({
       serverless: true,
+      service: "chat-demo",
       instrumentations: [
         new BetterHttpInstrumentation({
           plugins: [
