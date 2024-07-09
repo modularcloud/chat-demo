@@ -11,6 +11,8 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useAddress } from "@chopinframework/next/hooks";
+import Loading from "./loading";
 
 export type Message = {
   id: number;
@@ -21,11 +23,10 @@ export type Message = {
 
 export function ChatClientComponent({
   initialMessages,
-  address,
 }: {
   initialMessages: Message[];
-  address: string | null;
 }) {
+  let { address, isLoading } = useAddress();
   const { mutate, data } = useSWR(
     "/api/messages",
     (url) => fetch(url).then((res) => res.json()),
@@ -35,11 +36,14 @@ export function ChatClientComponent({
     }
   );
   const formRef = useRef<HTMLFormElement>(null);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <TooltipProvider>
       <div className="flex flex-col h-full pb-3 px-3 text-sm leading-6">
         <div className="flex flex-col-reverse gap-4 flex-grow overflow-scroll py-3">
-          {data.map((message: Message, index: number) => {
+          {isLoading ? <Loading /> :data.map((message: Message, index: number) => {
 
             // temporarily needed
             message.address = message.address.toLowerCase();
