@@ -6,8 +6,11 @@ settings:
 
 dependencies:
   '@chopinframework/next':
-    specifier: 1.0.17
-    version: 1.0.17(next@14.2.3)(react@18.3.1)
+    specifier: ^1.0.19
+    version: 1.0.19(@chopinframework/react@0.0.1)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1)
+  '@chopinframework/react':
+    specifier: ^0.0.1
+    version: 0.0.1(react-dom@18.3.1)(react@18.3.1)
   '@radix-ui/react-tooltip':
     specifier: ^1.0.7
     version: 1.0.7(@types/react-dom@18.3.0)(@types/react@18.3.3)(react-dom@18.3.1)(react@18.3.1)
@@ -85,18 +88,33 @@ packages:
       - utf-8-validate
     dev: false
 
-  /@chopinframework/next@1.0.17(next@14.2.3)(react@18.3.1):
-    resolution: {integrity: sha512-w6TW1kFnQESDqPCcnoyVK9jpRoTYa0YQfRf021Za2xD332bISXTC8JIbUbDVdZkcnXBI+X5JmobaaZu7LnKg0Q==}
+  /@chopinframework/next@1.0.19(@chopinframework/react@0.0.1)(next@14.2.3)(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-qOErWkz6Z/ZEFd2jLBSUkyLXVS6eWsDXkhIxCC5ribDJNQNnDUmExHqqYhLbJkDqsNlL595ns7e4GfyRlH3gXQ==}
     peerDependencies:
-      next: ^14.1.1
+      '@chopinframework/react': 0.0.1
+      next: ^14.0.0
+      react: ^18.0.0
+      react-dom: ^18.0.0
     dependencies:
       '@chopinframework/core': 0.0.8
+      '@chopinframework/react': 0.0.1(react-dom@18.3.1)(react@18.3.1)
+      jose: 5.6.3
       next: 14.2.3(react-dom@18.3.1)(react@18.3.1)
-      swr: 2.2.5(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     transitivePeerDependencies:
       - bufferutil
-      - react
       - utf-8-validate
+    dev: false
+
+  /@chopinframework/react@0.0.1(react-dom@18.3.1)(react@18.3.1):
+    resolution: {integrity: sha512-HbHHZqMF7/+qUKcyD8lI88vB+kMug+nUDg4JABrj6uyyCnuAptKHuqacyOXxjf6HIU7Fa5DyAwjDQAL7jnWVUA==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
     dev: false
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.57.0):
@@ -2243,6 +2261,10 @@ packages:
     resolution: {integrity: sha512-uy2bNX5zQ+tESe+TiC7ilGRz8AtRGmnJH55NC5S0nSUjvvvM2hJHmefHErugGXN4pNv4Qx7vLsnNw9qJ9mtIsw==}
     hasBin: true
     dev: true
+
+  /jose@5.6.3:
+    resolution: {integrity: sha512-1Jh//hEEwMhNYPDDLwXHa2ePWgWiFNNUadVmguAAw2IJ6sj9mNxV5tGXJNqlMkJAybF6Lgw1mISDxTePP/187g==}
+    dev: false
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
