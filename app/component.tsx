@@ -11,7 +11,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useAddress } from "@chopinframework/react";
 import Loading from "./loading";
 
 export type Message = {
@@ -26,7 +25,7 @@ export function ChatClientComponent({
 }: {
   initialMessages: Message[];
 }) {
-  let address = useAddress();
+  let address = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045";
   const { mutate, data } = useSWR(
     "/api/messages",
     (url) => fetch(url).then((res) => res.json()),

@@ -1,9 +1,8 @@
 "use server";
-import { getAddress } from "@chopinframework/next";
 import { sql } from "@vercel/postgres";
 
 export async function sendMessage(text: string) {
-  const address = await getAddress();
+  const address = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045";
   const timestamp = new Date().toISOString();
   await sql`INSERT INTO messages (text, timestamp, address) VALUES (${text}, ${timestamp}, ${address});`;
 
