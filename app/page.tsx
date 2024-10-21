@@ -1,4 +1,3 @@
-import { getAddress } from "@chopinframework/next";
 import { sql } from "@vercel/postgres";
 import { ChatClientComponent, type Message } from "./component";
 
