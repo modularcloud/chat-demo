@@ -12,7 +12,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Loading from "./loading";
-
+import { useAddress } from "@chopinframework/react";
 export type Message = {
   id: number;
   text: string;
@@ -25,7 +25,7 @@ export function ChatClientComponent({
 }: {
   initialMessages: Message[];
 }) {
-  let address = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045";
+  const { address } = useAddress();
   const { mutate, data } = useSWR(
     "/api/messages",
     (url) => fetch(url).then((res) => res.json()),
@@ -35,21 +35,11 @@ export function ChatClientComponent({
     }
   );
   const formRef = useRef<HTMLFormElement>(null);
-  // if (!address) {
-  //   return <Loading />;
-  // }
   return (
     <TooltipProvider>
       <div className="flex flex-col h-full pb-3 px-3 text-sm leading-6">
         <div className="flex flex-col-reverse gap-4 flex-grow overflow-scroll py-3">
           {data.map((message: Message, index: number) => {
-            // temporarily needed
-            message.address = message.address.toLowerCase();
-            address = address?.toLowerCase();
-
-            if (message.text === "") {
-              return null;
-            }
             const fromSelf = message.address === address;
             return (
               <div
@@ -133,17 +123,25 @@ export function ChatClientComponent({
             const text = formData.get("message") as string;
             if (text !== "" && address !== null) {
               formRef.current?.reset();
-              await mutate(wrapServerAction(sendMessage(text)), {
-                optimisticData: [
-                  {
-                    text,
-                    id: -1,
-                    timestamp: new Date().getTime(),
-                    address: address!,
-                  },
-                  ...data,
-                ],
-              });
+              await mutate(
+                wrapServerAction(
+                  fetch("/api/messages", {
+                    method: "POST",
+                    body: text,
+                  }).then((res) => res.json())
+                ),
+                {
+                  optimisticData: [
+                    {
+                      text,
+                      id: -1,
+                      timestamp: new Date().getTime(),
+                      address: address!,
+                    },
+                    ...data,
+                  ],
+                }
+              );
             }
           }}
           className="rounded-[0.625rem] border border-[#1F222B] bg-[#11141D] flex flex-row gap-[0.25rem] p-[0.25rem]"

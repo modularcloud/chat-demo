@@ -1,9 +1,16 @@
 "use server";
 import { sql } from "@vercel/postgres";
+import { getAddress, Oracle } from "@chopinframework/next";
 
 export async function sendMessage(text: string) {
-  const address = "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045";
-  const timestamp = new Date().toISOString();
+  // Get the address of the logged in user
+  const address = await getAddress();
+
+  // Securely get the current timestamp
+  const now = await Oracle.now();
+  const timestamp = new Date(now).toISOString();
+
+  // Insert the message into the database
   await sql`INSERT INTO messages (text, timestamp, address) VALUES (${text}, ${timestamp}, ${address});`;
 
   // Returning new result

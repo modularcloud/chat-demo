@@ -1,0 +1,6 @@
+{
+  "version": "0.1.0",
+  "command": "pnpm dev",
+  "proxyPort": 4000,
+  "targetPort": 3000
+}
