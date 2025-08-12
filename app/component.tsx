@@ -22,7 +22,7 @@ export function ChatClientComponent({
   initialMessages: Message[];
 }) {
   // Get the address of the logged in user on the client
-  const { address } = useAddress();
+  const address = useAddress();
 
   // Use your api like its you normally would
   const { mutate, data } = useSWR(
@@ -38,9 +38,9 @@ export function ChatClientComponent({
   return (
     <TooltipProvider>
       <div className="flex flex-col h-full pb-3 px-3 text-sm leading-6">
-        <ChatMessages messages={data} address={address} />
+        <ChatMessages messages={data} address={address || "anonymous"} />
         <ChatInput 
-          address={address} 
+          address={address || "anonymous"} 
           data={data} 
           mutate={mutate}
           formRef={formRef} 

@@ -1,5 +1,4 @@
 import { sql } from "@vercel/postgres";
-import { getAddress, Oracle } from "@chopinframework/next";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function GET() {
@@ -15,12 +14,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Text is required" }, { status: 400 });
   }
 
-  // Get the address of the logged in user
-  const address = await getAddress();
+  // For docs demo purposes, we do not depend on Chopin runtime APIs here
+  const address = "anonymous";
 
-  // Securely get the current timestamp
-  const now = await Oracle.now();
-  const timestamp = new Date(now).toISOString();
+  // Use server time for demo purposes
+  const timestamp = new Date(Date.now()).toISOString();
 
   // Insert the message into the database
   await sql`INSERT INTO messages (text, timestamp, address) VALUES (${text}, ${timestamp}, ${address});`;
